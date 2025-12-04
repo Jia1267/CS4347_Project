@@ -1,0 +1,5 @@
+card_no,fname,lname,dob,address,phone,email,password_hash,role
+101,John,Doe,1995-08-12,"123 Main St, City, TX","555-1234","john.doe@email.com","test123","admin"
+102,Emma,Smith,1998-04-20,"456 Oak Ave,City,TX","555-5678","emma.smith@email.com","123123","admin"
+103,Mike,Brown,1987-09-15,"789 PineRd,City,TX","555-8765","mike.brown@email.com","team9","member"
+104,Sophia,Johnson,2000-01-30,"101 Maple St,City,TX","555-2222","sophia.j@email.com","test111","member"

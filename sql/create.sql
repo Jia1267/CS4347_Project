@@ -1,0 +1,82 @@
+DROP TABLE IF EXISTS Author;
+DROP TABLE IF EXISTS LoanItem;
+DROP TABLE IF EXISTS Loan;
+DROP TABLE IF EXISTS Book;
+DROP TABLE IF EXISTS Publisher;
+DROP TABLE IF EXISTS Member;
+-- Member Table
+CREATE TABLE Member (
+member_id INT PRIMARY KEY AUTO_INCREMENT,
+fname VARCHAR(40) NOT NULL,
+lname VARCHAR(40) NOT NULL,
+dob DATE,
+address VARCHAR(100),
+phone VARCHAR(20) UNIQUE NOT NULL,
+email VARCHAR(50) UNIQUE NOT NULL,
+password_hash VARCHAR(255) NOT NULL,
+role VARCHAR(20)
+) AUTO_INCREMENT = 105;
+-- Publisher Table
+CREATE TABLE Publisher (
+p_name VARCHAR(60) PRIMARY KEY,
+address VARCHAR(100),
+phone VARCHAR(20)
+);
+-- Book Table
+CREATE TABLE Book (
+book_id INT PRIMARY KEY AUTO_INCREMENT,
+title VARCHAR(80) NOT NULL,
+isbn  VARCHAR(20) NOT NULL UNIQUE,
+genre VARCHAR(40),
+publication_date DATE,
+p_name VARCHAR(60) NOT NULL,
+status ENUM('AVAILABLE', 'ON_LOAN', 'LOST') NOT NULL DEFAULT 'AVAILABLE',
+CONSTRAINT fk_book_publisher
+FOREIGN KEY (p_name)
+REFERENCES Publisher(p_name)
+ON UPDATE CASCADE
+ON DELETE RESTRICT
+)AUTO_INCREMENT = 1000;
+
+-- Loan Table
+CREATE TABLE Loan (
+loan_id INT PRIMARY KEY AUTO_INCREMENT,
+member_id INT NOT NULL,
+date_out DATE NOT NULL,
+due_date DATE NOT NULL,
+return_date DATE,
+fee DECIMAL(8,2) DEFAULT 0 CHECK (fee >= 0),
+CONSTRAINT fk_loan_member
+FOREIGN KEY (member_id)
+REFERENCES Member(member_id)
+ON UPDATE CASCADE
+ON DELETE RESTRICT
+)AUTO_INCREMENT = 2000;
+-- LoanItem Table
+CREATE TABLE LoanItem (
+loan_id INT,
+book_id INT,
+quantity INT DEFAULT 1 CHECK (quantity >= 1),
+PRIMARY KEY (loan_id, book_id),
+CONSTRAINT fk_loanitem_loan
+FOREIGN KEY (loan_id)
+REFERENCES Loan(loan_id)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+CONSTRAINT fk_loanitem_book
+FOREIGN KEY (book_id)
+REFERENCES Book(book_id)
+ON UPDATE CASCADE
+ON DELETE RESTRICT
+);
+-- Author Table
+CREATE TABLE Author (
+book_id INT,
+a_name VARCHAR(80),
+PRIMARY KEY (book_id, a_name),
+CONSTRAINT fk_author_book
+FOREIGN KEY (book_id)
+REFERENCES Book(book_id)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);

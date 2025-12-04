@@ -1,0 +1,11 @@
+book_id,title,isbn,genre,publication_date,p_name,status
+101,"The Lightning Thief","9781423134940","Fantasy",2006-03-01,"HarperCollins","AVAILABLE"
+234,"Frankenstein","9780141439471","Thriller",1818-02-08,"Penguin Classics","ON_LOAN"
+193,"Catcher in the Rye","9780316769488","Fiction",1972-04-30,"Penguin Classics","AVAILABLE"
+849,"Babel","9780063021426","Fantasy",2020-08-23,"Random House","AVAILABLE"
+384,"Algebra 1 5th Edition","9780133706185","Education",2023-03-04,"HarperCollins","AVAILABLE"
+543,"Pride and Prejudice","9780141439518","Romance",2006-04-19,"Penguin Classics","AVAILABLE"
+503,"Thriller Book","9780000000003","Thriller",2018-10-20,"Random House","AVAILABLE"
+501,"Historical Fiction Novel","9780000000004","Historical",2019-05-10,"Penguin Classics","AVAILABLE"
+235,"Romance Novel","9780000000005","Romance",2023-04-23,"Random House","AVAILABLE"
+504,"Fantasy Epic","9780000000006","Fantasy",2020-11-01,"Penguin Classics","AVAILABLE"
